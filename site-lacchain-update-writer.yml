@@ -1,0 +1,5 @@
+- hosts: writer
+  gather_facts: yes
+  become: yes
+  roles:
+    - lacchain-writer-node
