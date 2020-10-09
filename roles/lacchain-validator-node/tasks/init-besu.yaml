@@ -3,9 +3,9 @@
   debug:
     msg: "Init Pantheon"
 
-- name: Get public ip
-  shell: dig +short myip.opendns.com @resolver1.opendns.com 2>/dev/null || curl -s --retry 2 icanhazip.com
-  register: node_ip
+#- name: Get public ip
+#  shell: dig +short myip.opendns.com @resolver1.opendns.com 2>/dev/null || curl -s --retry 2 icanhazip.com
+#  register: node_ip
 
 - name: create lacchain directories
   file:
@@ -54,7 +54,7 @@
 
 - name: print enode key
   debug:
-    msg: enode://{{enode_key.stdout}}@{{node_ip.stdout}}:60606
+    msg: enode://{{enode_key.stdout}}@{{node_ip}}:60606
 
 - name: update permissioned nodes validator file
   replace:
@@ -67,7 +67,7 @@
   replace:
     dest: ~/lacchain/tmp/permissions_config.toml
     regexp: ",]$"
-    replace: ',"enode://{{enode_key.stdout}}@{{node_ip.stdout}}:60606"]'
+    replace: ',"enode://{{enode_key.stdout}}@{{node_ip}}:60606"]'
   when: validator
 
 - name: Fetch permissioned node validator
