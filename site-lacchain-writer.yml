@@ -14,11 +14,11 @@
       prompt: "Do you agree with the Terms and Conditions of use of LACChain Test Network? [Y/N]"
       private: no
   environment:
-    HTTP_PROXY: http://proxy.example.com:8080
-    HTTPS_PROXY: http://proxy.example.com:8080
+    HTTP_PROXY: "{{ http_proxy }}"
+    HTTPS_PROXY: "{{ https_proxy }}"
     NO_PROXY: localhost,127.,10.,192.168.
-    http_proxy: http://proxy.example.com:8080
-    https_proxy: http://proxy.example.com:8080
+    http_proxy: "{{ http_proxy }}"
+    https_proxy: "{{ https_proxy }}"
     no_proxy: localhost,127.,10.,192.168.
   roles:
     - lacchain-writer-node

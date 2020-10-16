@@ -6,7 +6,7 @@
 # <your node address> node_name=<node name>
 
 [writer]
-# <your node address> node_ip=<besu_public_ip> password=<orion password> node_name=<node name> node_email=<your@email> dns_name=<your dns>
+# <your node address> node_ip=<besu_public_ip> password=<orion password> node_name=<node name> node_email=<your@email> dns_name=<your dns> http_proxy=http://example.proxy.com:8080 https_proxy=https://example.proxy.com:8443
 
 # UPDATE
 [writer]
