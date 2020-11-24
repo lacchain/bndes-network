@@ -2,7 +2,7 @@
 
 * Below you will find instructions for the deployment of nodes using Ansible. This implies that it will be executed from a local machine on a remote server. The local machine and the remote server will communicate via ssh.
 
-* The installation with ansible provided is compatible with **Ubuntu 18.04** and **Centos7**. If you want to deploy your node in a different operative system, you can go to the [documentation for Generic Onboarding](https://github.com/lacchain/besu-network/blob/master/GENERIC_ONBOARDING.md).
+* The installation with ansible provided is compatible with **Ubuntu 18.04** and **Centos7**. If you want to deploy your node in a different operative system, you can go to the [documentation for Generic Onboarding](https://github.com/lacchain/bndes-network/blob/master/GENERIC_ONBOARDING.md).
 
 
 
@@ -47,8 +47,8 @@ $ sudo apt-get install ansible
 To configure and install Pantheon and Orion, you must clone this git repository in your **local machine**.
 
 ```shell
-$ git clone https://github.com/lacchain/besu-network
-$ cd besu-network/
+$ git clone https://github.com/lacchain/bndes-network
+$ cd bndes-network/
 ```
 
 ### Obtain SSH access to your remote machine ###
@@ -145,8 +145,8 @@ ok: [x.x.x.x] => {
 
 * If everything worked, an ORION service and a PANTHEON service managed by Systemctl will be created with **stopped** status.
 * After installation has finished you will have nginx installed on your machine; it will be up and running and will allow secure and encrypted RPC connections (on the default 443 port). Certificates used to create the secure connections are self signed; it is up to you decide another way to secure RPC connections or continue using the provided  default service.
-* In order to be permissioned, now you need to follow the [administrative steps of the permissioning process](https://github.com/lacchain/besu-network/blob/master/PERMISSIONING_PROCESS.md).
-* Once you are permissioned, you can verify that you are connected to other nodes in the network by following the steps detailed in [#issue33](https://github.com/lacchain/besu-network/issues/33).
+* In order to be permissioned, now you need to follow the [administrative steps of the permissioning process](https://github.com/lacchain/bndes-network/blob/master/PERMISSIONING_PROCESS.md).
+* Once you are permissioned, you can verify that you are connected to other nodes in the network by following the steps detailed in [#issue33](https://github.com/lacchain/bndes-network/issues/33).
 
 ## Node Configuration
 
@@ -245,11 +245,11 @@ If that doesn't solve the problem, contact us at info@lacchain.net.
 	
 ## Deploying Dapps on LACCHAIN
 
-For a quick overview of some mainstream tools that you can use to deploy Smart Contracts, connect external applications and broadcast transactions to the LACChain Besu Network, you can check our [Guide](https://github.com/lacchain/besu-network/blob/master/DEPLOY_APPLICATIONS.md).
+For a quick overview of some mainstream tools that you can use to deploy Smart Contracts, connect external applications and broadcast transactions to the LACChain Besu Network, you can check our [Guide](https://github.com/lacchain/bndes-network/blob/master/DEPLOY_APPLICATIONS.md).
 
 ## Contact
 
-For any issues, you can either go to [issues](https://github.com/lacchain/besu-network/issues) or e-mail us at info@lacchain.net. Any feedback is more than welcome!
+For any issues, you can either go to [issues](https://github.com/lacchain/bndes-network/issues) or e-mail us at info@lacchain.net. Any feedback is more than welcome!
 
 &nbsp;
 &nbsp;
