@@ -248,6 +248,8 @@ If any of these two checks doesn't work, try to restart the pantheon service:
 $ service pantheon restart
 ```
 
+You can also check the connection using [Besu Health Check](https://github.com/lacchain/besu-healthcheck) 
+
 If that doesn't solve the problem, contact us at info@lacchain.net.
 	
 ## Deploying Dapps on LACCHAIN
