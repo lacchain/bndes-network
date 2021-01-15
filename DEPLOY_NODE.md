@@ -2,7 +2,7 @@
 
 * Below you will find instructions for the deployment of nodes using Ansible. This implies that it will be executed from a local machine on a remote server. The local machine and the remote server will communicate via ssh.
 
-* The installation with ansible provided is compatible with **Ubuntu 18.04** and **Centos7**. If you want to deploy your node in a different operative system, you can go to the [documentation for Generic Onboarding](https://github.com/lacchain/bndes-network/blob/master/GENERIC_ONBOARDING.md).
+* The installation with ansible provided is compatible with **Ubuntu 18.04** and **Centos7**. Despite of that, BNDES installed on **Red Hat**. If you want to deploy your node in a different operative system, you can go to the [documentation for Generic Onboarding](https://github.com/lacchain/bndes-network/blob/master/GENERIC_ONBOARDING.md).
 
 
 
@@ -45,6 +45,8 @@ $ sudo apt-get install ansible
 ### Clone Repository ####
 
 To configure and install Pantheon and Orion, you must clone this git repository in your **local machine**.
+
+Obs: The old name of Hyperldger Besu is Pantheon and this tutorial will use the two names as synonyms.
 
 ```shell
 $ git clone https://github.com/lacchain/bndes-network
@@ -132,6 +134,8 @@ Consider the following points:
 	```shell
 	$ ansible-playbook -i inventory --private-key=~/.ssh/id_rsa -u remote_user site-lacchain-writer.yml
 	```
+
+* Obs.: Ansible uses SSH to make the connection. .shh/id_rsa is the private key file to enable your local machine accesses the remote machine. 
 
 * At the end of the installation, if everything worked a PANTHEON service will be created in the case of a **validator node** managed by Systemctl with **stopped** status.
 
