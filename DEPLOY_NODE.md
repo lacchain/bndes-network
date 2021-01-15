@@ -4,6 +4,8 @@
 
 * The installation with ansible provided is compatible with **Ubuntu 18.04** and **Centos7**. Despite of that, BNDES installed on **Red Hat**. If you want to deploy your node in a different operative system, you can go to the [documentation for Generic Onboarding](https://github.com/lacchain/bndes-network/blob/master/GENERIC_ONBOARDING.md).
 
+* You can view a video explaining how to do the steps below at: https://www.youtube.com/watch?v=uHyh3YQl_1A
+
 
 
 ## Minimum System Requirements
@@ -163,7 +165,6 @@ The default configuration should work for everyone. However, depending on your n
 Once your node is ready, you can start it up with this command in **remote machine**:
 
 ```shell
-<remote_machine>$ service orion start
 <remote_machine>$ service pantheon start
 ```
 
@@ -172,12 +173,14 @@ Once your node is ready, you can start it up with this command in **remote machi
  * If you need to restart the services, you can execute the following commands:
 
 ```shell
-<remote_machine>$ service orion restart
 <remote_machine>$ service pantheon restart
 ```
 
 ### Updates ###
-  * You can update **Besu**, by preparing your inventory with:
+  * You can update **Besu**, by preparing your inventory as described below.
+
+  * Note that an update will not remove any data from the blockchain itself. It is only an update on software programs.
+  
 	```shell
 	[writer] #here put the role you are gong to update
 	35.193.123.227 
