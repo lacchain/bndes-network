@@ -94,7 +94,7 @@ Make sure you have SSH access to the node you're setting up. This step will vary
 		$ sudo yum update
 		```
 
-## Pantheon + Orion Installation ##
+## Pantheon Installation ##
 
 ### Preparing installation of a new node ###
 
@@ -113,7 +113,7 @@ Make sure you have SSH access to the node you're setting up. This step will vary
 Consider the following points:
 - Place the new line in the section corresponding to your node's role: `[writer]`, `[validators]` or `[bootnodes]`.
 - The first element on the new line is the IP or hostname where you can reach your remote machine from your local machine.
-- The value of `password` is the password that will be used to set up Orion, for private transactions.
+- The value of `password` is the password that will be used to set up Orion, for private transactions (not used in RBB).
 - The value of `node_name` is the name you want for your node in the network monitoring tool.
 - The value of `node_email` is the email address you want to register for your node in the network monitoring tool. It's a good idea to provide the e-mail of the technical contact identified or to be identified in the registration form as part of the on-boarding process.
 
