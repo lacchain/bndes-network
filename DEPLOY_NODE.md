@@ -250,7 +250,7 @@ $ service pantheon restart
 
 You can also check the connection using [Besu Health Check](https://github.com/lacchain/besu-healthcheck) 
 
-If that doesn't solve the problem, contact us at info@lacchain.net.
+If that doesn't solve the problem, contact us at blockchaingov@bndes.gov.br.
 	
 ## Deploying Dapps on LACCHAIN
 
@@ -258,7 +258,7 @@ For a quick overview of some mainstream tools that you can use to deploy Smart C
 
 ## Contact
 
-For any issues, you can either go to [issues](https://github.com/lacchain/bndes-network/issues) or e-mail us at info@lacchain.net. Any feedback is more than welcome!
+For any issues, you can either go to [issues](https://github.com/lacchain/bndes-network/issues) or e-mail us at blockchaingov@bndes.gov.br. Any feedback is more than welcome!
 
 &nbsp;
 &nbsp;
