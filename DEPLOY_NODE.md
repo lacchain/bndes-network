@@ -2,7 +2,9 @@
 
 * Below you will find instructions for the deployment of nodes using Ansible. This implies that it will be executed from a local machine on a remote server. The local machine and the remote server will communicate via ssh.
 
-* The installation with ansible provided is compatible with **Ubuntu 18.04** and **Centos7**. If you want to deploy your node in a different operative system, you can go to the [documentation for Generic Onboarding](https://github.com/lacchain/bndes-network/blob/master/GENERIC_ONBOARDING.md).
+* The installation with ansible provided is compatible with **Ubuntu 18.04** and **Centos7**. Despite of that, BNDES installed on **Red Hat**. If you want to deploy your node in a different operative system, you can go to the [documentation for Generic Onboarding](https://github.com/lacchain/bndes-network/blob/master/GENERIC_ONBOARDING.md).
+
+* You can view a video explaining how to do the steps below at: https://www.youtube.com/watch?v=uHyh3YQl_1A
 
 
 
@@ -18,13 +20,6 @@ Recommended hardware features for the nodes in the test-net:
 
 * **Operating System**: Ubuntu 16.04, Ubuntu 18.04, Centos7, always 64 bits
 
-It is necessary to enable the following network ports in the machine in which we are going to deploy the node:
-
-* **4040**: TCP - Port for communication for Orion.
-
-* **60606**: TCP/UDP - Port to establish communication p2p between nodes.
-
-* **4545**: TCP - Port to establish RPC communication. (this port is used for applications that communicate with LACChain and may be leaked to the Internet)
 
 ## Pre-requisites
 
@@ -44,7 +39,9 @@ $ sudo apt-get install ansible
 
 ### Clone Repository ####
 
-To configure and install Pantheon and Orion, you must clone this git repository in your **local machine**.
+To configure and install Pantheon, you must clone this git repository in your **local machine**.
+
+Obs: The old name of Hyperldger Besu is Pantheon and this tutorial will use the two names as synonyms.
 
 ```shell
 $ git clone https://github.com/lacchain/bndes-network
@@ -90,7 +87,7 @@ Make sure you have SSH access to the node you're setting up. This step will vary
 		$ sudo yum update
 		```
 
-## Pantheon + Orion Installation ##
+## Besu Installation ##
 
 ### Preparing installation of a new node ###
 
@@ -109,9 +106,10 @@ Make sure you have SSH access to the node you're setting up. This step will vary
 Consider the following points:
 - Place the new line in the section corresponding to your node's role: `[writer]`, `[validators]` or `[bootnodes]`.
 - The first element on the new line is the IP or hostname where you can reach your remote machine from your local machine.
-- The value of `password` is the password that will be used to set up Orion, for private transactions.
+- The value of `password` is the password that will be used to set up Orion, for private transactions (not used in RBB).
 - The value of `node_name` is the name you want for your node in the network monitoring tool.
 - The value of `node_email` is the email address you want to register for your node in the network monitoring tool. It's a good idea to provide the e-mail of the technical contact identified or to be identified in the registration form as part of the on-boarding process.
+- If you have an internal proxy, please fill the value of `http_proxy` and `https_proxy` vars.
 
 ### Deploying the new node ###
 
@@ -133,6 +131,8 @@ Consider the following points:
 	$ ansible-playbook -i inventory --private-key=~/.ssh/id_rsa -u remote_user site-lacchain-writer.yml
 	```
 
+* Obs.: Ansible uses SSH to make the connection. .shh/id_rsa is the private key file to enable your local machine accesses the remote machine. 
+
 * At the end of the installation, if everything worked a PANTHEON service will be created in the case of a **validator node** managed by Systemctl with **stopped** status.
 
 Don't forget to write down your node's "enode" from the log by locating the line that looks like this:
@@ -145,8 +145,6 @@ ok: [x.x.x.x] => {
 
 * If everything worked, an ORION service and a PANTHEON service managed by Systemctl will be created with **stopped** status.
 * After installation has finished you will have nginx installed on your machine; it will be up and running and will allow secure and encrypted RPC connections (on the default 443 port). Certificates used to create the secure connections are self signed; it is up to you decide another way to secure RPC connections or continue using the provided  default service.
-* In order to be permissioned, now you need to follow the [administrative steps of the permissioning process](https://github.com/lacchain/bndes-network/blob/master/PERMISSIONING_PROCESS.md).
-* Once you are permissioned, you can verify that you are connected to other nodes in the network by following the steps detailed in [#issue33](https://github.com/lacchain/bndes-network/issues/33).
 
 ## Node Configuration
 
@@ -159,7 +157,6 @@ The default configuration should work for everyone. However, depending on your n
 Once your node is ready, you can start it up with this command in **remote machine**:
 
 ```shell
-<remote_machine>$ service orion start
 <remote_machine>$ service pantheon start
 ```
 
@@ -168,12 +165,14 @@ Once your node is ready, you can start it up with this command in **remote machi
  * If you need to restart the services, you can execute the following commands:
 
 ```shell
-<remote_machine>$ service orion restart
 <remote_machine>$ service pantheon restart
 ```
 
 ### Updates ###
-  * You can update **Besu**, by preparing your inventory with:
+  * You can update **Besu**, by preparing your inventory as described below.
+
+  * Note that an update will not remove any data from the blockchain itself. It is only an update on software programs.
+  
 	```shell
 	[writer] #here put the role you are gong to update
 	35.193.123.227 
@@ -209,7 +208,12 @@ Once your node is ready, you can start it up with this command in **remote machi
 	```shell
 	$ ansible-playbook -i inventory --private-key=~/.ssh/id_ecdsa -u remote_user site-lacchain-update-validator.yml 
 	```
-	
+
+## Clock
+
+Ensure that the clock of your institution is synchronizing with trustful online NTP servers. 
+BNDES is synchronizing with NTP.Br. 
+
 ## Checking your connection
 
 Once you have been permissioned, you can check if your node is connected to the network properly.
@@ -241,15 +245,13 @@ If any of these two checks doesn't work, try to restart the pantheon service:
 $ service pantheon restart
 ```
 
-If that doesn't solve the problem, contact us at info@lacchain.net.
+You can also check the connection using [Besu Health Check](https://github.com/lacchain/besu-healthcheck) 
+
+If that doesn't solve the problem, contact us at blockchaingov@bndes.gov.br.
 	
-## Deploying Dapps on LACCHAIN
-
-For a quick overview of some mainstream tools that you can use to deploy Smart Contracts, connect external applications and broadcast transactions to the LACChain Besu Network, you can check our [Guide](https://github.com/lacchain/bndes-network/blob/master/DEPLOY_APPLICATIONS.md).
-
 ## Contact
 
-For any issues, you can either go to [issues](https://github.com/lacchain/bndes-network/issues) or e-mail us at info@lacchain.net. Any feedback is more than welcome!
+For any issues, you can either go to [issues](https://github.com/lacchain/bndes-network/issues) or e-mail us at blockchaingov@bndes.gov.br. Any feedback is more than welcome!
 
 &nbsp;
 &nbsp;
@@ -262,7 +264,3 @@ This work is licensed under a [license](http://creativecommons.org/licenses/by-n
 
 &nbsp;
 &nbsp;
-
-**Acknowledgement**
-
-We acknowledge very much the contributions of [everis](https://www.everis.com/) to this development, leading the first deployment of the network and actively participating in the day-to-day.
