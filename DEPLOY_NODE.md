@@ -215,7 +215,12 @@ Once your node is ready, you can start it up with this command in **remote machi
 	```shell
 	$ ansible-playbook -i inventory --private-key=~/.ssh/id_ecdsa -u remote_user site-lacchain-update-validator.yml 
 	```
-	
+
+## Clock
+
+Assure that the clock of your institution is synchronizing with online NTP servers. 
+BNDES is synchronizing with NTP.Br. 
+
 ## Checking your connection
 
 Once you have been permissioned, you can check if your node is connected to the network properly.
