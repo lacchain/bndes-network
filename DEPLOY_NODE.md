@@ -116,7 +116,7 @@ Consider the following points:
 - The value of `password` is the password that will be used to set up Orion, for private transactions (not used in RBB).
 - The value of `node_name` is the name you want for your node in the network monitoring tool.
 - The value of `node_email` is the email address you want to register for your node in the network monitoring tool. It's a good idea to provide the e-mail of the technical contact identified or to be identified in the registration form as part of the on-boarding process.
-- If you have an internal proxy, please fill the value of http_proxy and https_proxy vars.
+- If you have an internal proxy, please fill the value of `http_proxy` and `https_proxy` vars.
 
 ### Deploying the new node ###
 
