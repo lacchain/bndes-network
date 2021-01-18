@@ -251,10 +251,6 @@ You can also check the connection using [Besu Health Check](https://github.com/l
 
 If that doesn't solve the problem, contact us at blockchaingov@bndes.gov.br.
 	
-## Deploying Dapps on LACCHAIN
-
-For a quick overview of some mainstream tools that you can use to deploy Smart Contracts, connect external applications and broadcast transactions to the LACChain Besu Network, you can check our [Guide](https://github.com/lacchain/bndes-network/blob/master/DEPLOY_APPLICATIONS.md).
-
 ## Contact
 
 For any issues, you can either go to [issues](https://github.com/lacchain/bndes-network/issues) or e-mail us at blockchaingov@bndes.gov.br. Any feedback is more than welcome!
@@ -270,7 +266,3 @@ This work is licensed under a [license](http://creativecommons.org/licenses/by-n
 
 &nbsp;
 &nbsp;
-
-**Acknowledgement**
-
-We acknowledge very much the contributions of [everis](https://www.everis.com/) to this development, leading the first deployment of the network and actively participating in the day-to-day.
