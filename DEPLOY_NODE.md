@@ -219,7 +219,7 @@ Once your node is ready, you can start it up with this command in **remote machi
 
 ## Clock
 
-Assure that the clock of your institution is synchronizing with online NTP servers. 
+Ensure that the clock of your institution is synchronizing with trustful online NTP servers. 
 BNDES is synchronizing with NTP.Br. 
 
 ## Checking your connection
